@@ -3,13 +3,13 @@ import {Strategy}  from 'passport-local';
 import {getConnection} from '../database';
 import {Request} from 'express';
 import bcrypt from 'bcrypt';
-import {IUser} from '../interfaces/user.interface';
+import {IUser} from '../interfaces/';
 
 async function authenticateUser(req:Request,email:string,password:string,done:Function): Promise<Function> {
 	
 	try{
 		
-		const BD = `${process.env.PREFIJO_APP}${req.body.codigo}`;
+		const BD = req.body.codigo;
 		
 		const conn = await getConnection(BD);
 		
@@ -28,9 +28,11 @@ async function authenticateUser(req:Request,email:string,password:string,done:Fu
 				
 				user.bd = BD;
 				
+				conn.end();
+				
 				return done(null,user, req.flash('msgSuccess','Login success'));
 			}
-			
+			return done(null,false,'Incorrect Password.');
 		}
 		
 		return done(null,false,req.flash('msgWarning','Email not match...'));
@@ -56,33 +58,36 @@ passport.serializeUser( (user:IUser,done) => {
 	done(null,user);
 });
 
-passport.deserializeUser( async(u:IUser,done):Promise<Function | void> => {
+passport.deserializeUser( async(u:IUser,done)  => {
 	
 	try{
 		
 		const conn = await getConnection(u.bd);
 		
-		const [result] = await conn.query("SELECT * from users where id = ?",[u.id]);
+		const [result] = await conn.execute("SELECT * from users where id = ?",[u.id]);
 		
 		const users = JSON.parse(JSON.stringify(result));
 		
-		if(users.length > 0){
-			
-			const user:IUser = users[0];
-			
-			user.bd = u.bd;
-			
-			//console.log(`user: ${user.bd}`);
-			
-			return done(null,user);
-		}else{
-			return done(null,false);	
-		}
+	    const user:IUser = users[0];
+					
+		user.bd = u.bd;
+					 
+		done(null,user);
+		
+		conn.end();
 		
 	}catch(e){
-		return done(null,false);	
-	}	
+		
+		done(null,e.message);
+		
+	}
+		
+			
+});	
 	
-	
-});
+
+
+
+
+
 

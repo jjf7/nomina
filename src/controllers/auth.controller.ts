@@ -2,16 +2,18 @@ import { Request, Response } from 'express';
 import {getConnection} from '../database';
 import bcrypt from 'bcrypt';
 import passport from 'passport';
+import {IRequest} from '../interfaces/'
 
 export  const signinRender = (req:Request, res:Response): void => {
-	return res.render('login');
+	return res.render('index');
 }
 
 export  const signin = passport.authenticate("local",{
-	successRedirect: "/",
-    failureRedirect: "/login",
+	successRedirect: "/dashboard",
+    failureRedirect: "/",
     failureFlash: true
 });
+
 
 
 export  const signupRender = (req:Request, res:Response): void => {
@@ -19,7 +21,7 @@ export  const signupRender = (req:Request, res:Response): void => {
 }
 
 
-export  const signup = async(req:any, res:Response): Promise<Response | void> => {
+export const signup = async(req:IRequest, res:Response):Promise<Response | void> => {
 	
 	
 	const { email, password } = req.body;
@@ -32,7 +34,7 @@ export  const signup = async(req:any, res:Response): Promise<Response | void> =>
 			return res.redirect("/registro");
 		}
 		
-		const conn = await getConnection(req.user.bd);
+		const conn = await getConnection('demo');
 		
 		const [result] = await conn.query("SELECT * FROM users where email = ?",[email]);
 		

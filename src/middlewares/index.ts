@@ -1,4 +1,4 @@
-import {Request,Response} from 'express';
+import {Request,Response,NextFunction} from 'express';
 
 interface IPaginationResults {
 		
@@ -9,7 +9,7 @@ interface IPaginationResults {
 
 export  const paginatedResults = (tabla:any) => {
 
-return (req:any,res:any,next:Function) => {
+return (req:any,res:any,next:NextFunction) => {
 	        const results:IPaginationResults = { };
 				
 				/*const page = req.query.page ? parseInt(req.query.page) : 1;

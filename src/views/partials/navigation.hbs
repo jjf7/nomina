@@ -1,108 +1,81 @@
-<!-- Sidebar  -->
-    <nav id="sidebar">
-            <div class="sidebar-header">
-               <img src="/public/images/logo.png" class="img-fluid" style="width:180px" >
-            </div>
-    
-            <ul class="list-unstyled components">
-			    {{#if user}}
-				 
-				
-                <li >
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                       
-                        Conceptos
-                    </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Item 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Item 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Item 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                   
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        
-                        Empleados
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Item 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Item 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Item 3</a>
-                        </li>
-                    </ul>
-                </li>
-				
-				<li>
-                   
-                    <a href="#pageSubmenuUsers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        Perfiles
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenuUsers">
-                        <li>
-                            <a href="/usuarios">Usuarios</a>
-                        </li>
-                        <li>
-                            <a href="#">Item 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Item 3</a>
-                        </li>
-                    </ul>
-                </li>
-				
-				<li>
-                   
-                    <a href="#pageMantenimiento" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        
-                        Mantenimiento
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageMantenimiento">
-                        <li>
-                            <a href="/cargos">Cargos</a>
-                        </li>
-						<li>
-                            <a href="/tipos-nominas">Tipos Nomina</a>
-                        </li>
-						<li>
-                            <a href="/departamentos">Departamentos</a>
-                        </li>
-						<li>
-                            <a href="/sexo">Sexo</a>
-                        </li>
-						
-						<li>
-                            <a href="/grupos-sanguineos">Grupos Sanguineos</a>
-                        </li>
-						
-						<li>
-                            <a href="/estado-civil">Estado civil</a>
-                        </li>
-                     </ul>
-                </li>
-				
-				<li >
-							
-						<form action="/logout?_method=DELETE" method="POST">
-							<button type="submit"  class="nav-link btn btn-xs btn-none text-warning font-weight-bold">Cerrar sesi&oacute;n</button>
-						</form>
-                               
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class="active  nav-item">
+                    <a class="nav-link"  href="">
+                        <i  class="la la-plus font-weight-bold text-white btn btn-warning btn-sm"></i><span class="menu-title" data-i18n="Dashboard">Nómina</span></a>
                 </li>
 				
 				 
-				{{/if}}
+				<li class=" nav-item" >
+                    <a  href="#" ><i class="la la-folder-o"></i><span class="menu-title" data-i18n="Invoice">Conceptos</span></a>
+                    <ul class="menu-content">
+                        <li  ><a class="menu-item font-small-3" href="" data-toggle=""><i></i><span data-i18n="">Option 1</span></a>
+                        </li>
+                        <li   ><a class="menu-item font-small-3" href="" data-toggle=""><i></i><span data-i18n="">Option 2</span></a>
+                        </li>
+                        <li   ><a class="menu-item font-small-3" href="" data-toggle=""><i></i><span data-i18n="">Option 3</span></a>
+                        </li>
+                    </ul>
+                </li>
 				
+				<li class="nav-item" >
+                    <a href="#" ><i class="la la-users"></i> <span class="menu-title" data-i18n="Invoice">Empleados</span></a>
+                    <ul class="menu-content">
+                        <li  ><a class="menu-item font-small-3" href="/empleados" data-toggle=""><i></i><span data-i18n="">Empleados</span></a>
+                        </li>
+                        <li  ><a class="menu-item font-small-3" href="/empleados/nuevo" data-toggle=""><i></i><span data-i18n="">Nuevo empleado</span></a>
+                        </li>
+                        <li  ><a class="menu-item font-small-3" href="" data-toggle=""><i></i><span data-i18n="">Option 3</span></a>
+                        </li>
+                    </ul>
+                </li>
+				
+				
+				<li class="  nav-item" ><a  href="#" ><i class="la la-key"></i><span class="menu-title" data-i18n="Invoice">Perfiles</span></a>
+                    <ul class="menu-content">
+                        <li ><a class="menu-item font-small-3" href="/usuarios" data-toggle=""><i></i><span data-i18n="">Usuarios</span></a>
+                        </li>
+                        <li  ><a class="menu-item font-small-3" href="" data-toggle=""><i></i><span data-i18n="">Option 2</span></a>
+                        </li>
+                        <li ><a class="menu-item font-small-3" href="" data-toggle=""><i></i><span data-i18n="">Option 3</span></a>
+                        </li>
+                    </ul>
+                </li>
+				
+				<li class="  nav-item" ><a href="#" ><i class="la la-database"></i><span class="menu-title" data-i18n="Invoice">Mantenimiento</span></a>
+                    <ul class="menu-content">
+                        <li  ><a class="menu-item font-small-3" href="/cargos" data-toggle=""><i></i><span data-i18n="Cargos">Cargos</span></a>
+                        </li>
+                        <li  ><a class="menu-item font-small-3" href="/tipos-nominas" data-toggle=""><i></i><span data-i18n="Tipos Nomina">Tipos Nomina</span></a>
+                        </li>
+                        <li  ><a class="menu-item font-small-3" href="/departamentos" data-toggle=""><i></i><span data-i18n="Departamentos">Departamentos</span></a>
+                        </li>
+						<li  ><a  class="menu-item font-small-3" href="/sexo" data-toggle=""><i></i><span data-i18n="Sexo">Sexo</span></a>
+                        </li>
+						
+						<li  ><a class="menu-item font-small-3" href="/grupos-sanguineos" data-toggle=""><i></i><span data-i18n="Grupos Sanguineos">Grupos Sanguineos</span></a>
+                        </li>
+						
+						<li ><a class="menu-item font-small-3" href="/estado-civil" data-toggle=""><i></i><span data-i18n="Estado civil">Estado civil</span></a>
+                        </li>
+                    </ul>
+                </li>
+				
+				
+				
+                 
             </ul>
-    
-        </nav>	
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,15 +1,15 @@
-import {Request, Response} from 'express';
+import {Request, Response, NextFunction} from 'express';
 
-export const authenticate = (req:Request, res:Response ,next:Function ): Function | void => {
+export const authenticate = (req:Request, res:Response ,next:NextFunction ): Function | void => {
 	if(req.isAuthenticated()){
 		return next();
 	}
 	req.flash('msgWarning', 'No estas autorizado...');
-	return res.redirect('/login');
+	return res.redirect('/');
 }
 
 
-export const checkAuthenticate = (req:Request, res:Response ,next:Function ): Function | void => {
+export const checkAuthenticate = (req:Request, res:Response ,next:NextFunction ): Function | void => {
 	
 	if(req.isAuthenticated()){
 		return res.redirect('/');

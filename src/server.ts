@@ -1,4 +1,4 @@
-import express, {Application} from 'express';
+import express, {Application,Request,Response,NextFunction} from 'express';
 import morgan from 'morgan';
 import exphbs from 'express-handlebars';
 import path from 'path';
@@ -6,8 +6,8 @@ import session from 'express-session';
 import flash from 'connect-flash';
 import passport from 'passport';
 import methodOverride from 'method-override';
-
-import {getConnection} from './database';
+import {IRequest} from './interfaces'
+import {getConnection} from './database'
 import {authenticate,authRole} from './middlewares/authenticate';
 
 import {helpersFunctions} from './helpers';
@@ -15,12 +15,14 @@ import  './config/passport';
 
 // Routes Imports
 import authRoutes from './routes/authRoutes'
-import cargosRoutes from './routes/cargosRoutes'
-import tiposNominasRoutes from './routes/tiposNominasRoutes'
-import departamentosRoutes from './routes/departamentosRoutes'
-import sexoRoutes from './routes/sexoRoutes'
-import grupoSanguineoRoutes from './routes/grupoSanguineoRoutes'
-import estadoCivilRoutes from './routes/estadoCivilRoutes'
+import positionRoutes from './routes/positionRoutes'
+import payrollTypesRoutes from './routes/payrollTypesRoutes'
+import departmentsRoutes from './routes/departmentsRoutes'
+import sexesRoutes from './routes/sexesRoutes'
+import bloodTypeRoutes from './routes/bloodTypeRoutes'
+import maritalStatusRoutes from './routes/maritalStatusRoutes'
+import users from './routes/users'
+import employeesRoutes from './routes/employees'
 
 // Controllers
 import {indexController} from './controllers/index.controller';
@@ -62,33 +64,62 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// globals variables
+// Globals variables
 
-app.use((req:express.Request, res:express.Response, next:Function):Function => {
+app.use((req:express.Request, res:express.Response, next:NextFunction) => {
 	
 	res.locals.msgSuccess = req.flash('msgSuccess');
 	res.locals.msgDanger = req.flash('msgDanger');
 	res.locals.msgWarning = req.flash('msgWarning');
+	res.locals.error = req.flash('error');
 	res.locals.user = req.user || null;
-	return next();
+	next();
 });
+
+
+app.use( async(req:IRequest,res:Response,next:NextFunction): Promise<Response | void> => {
+	
+	try{
+		
+		if(!req.user)
+		{
+			return next();	
+			
+		}else{
+			
+			const conn = await getConnection(req.user.bd);
+	
+			const [results] = await conn.query('SELECT P.*, PU.*, PD.* from permisos as P join permisos_usuarios as PU on P.id=PU.id_permiso join permisos_usuarios_do as PD on PD.id_permisos_usuarios = PU.id');
+			
+			const rows = JSON.parse(JSON.stringify(results));
+			
+			req.permissionsApp = rows;
+			
+			conn.end();
+			
+			return next();
+			
+		}
+		
+		
+	}catch(e){
+		return res.status(500).send(e.message);
+	}
+
+})
+
 
 // Routes
 
-app.get('/', indexController);
+app.use(users);
 app.use(authRoutes);
-app.use(cargosRoutes);
-app.use(tiposNominasRoutes);
-app.use(departamentosRoutes);
-app.use(sexoRoutes);
-app.use(grupoSanguineoRoutes);
-app.use(estadoCivilRoutes);
-
-app.get('/usuarios', authenticate, authRole(['superusuario','administrador']), (req:any, res:express.Response ) => {
-	res.render('usuarios');
-});
-
-
+app.use(positionRoutes);
+app.use(payrollTypesRoutes);
+app.use(departmentsRoutes);
+app.use(sexesRoutes);
+app.use(bloodTypeRoutes);
+app.use(maritalStatusRoutes);
+app.use(employeesRoutes);
 
 
 // Static files

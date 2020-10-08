@@ -9,12 +9,16 @@ import {authenticate,checkAuthenticate} from '../middlewares/authenticate';
 
 const router = Router();
 
-router.get('/login',checkAuthenticate, signinRender);
-router.post('/login',checkAuthenticate, signin);
+router.get('/',checkAuthenticate, signinRender);
+router.post('/',checkAuthenticate, signin);
 
-router.get('/registro',authenticate, signupRender);
-router.post('/registro',authenticate, signup);
+router.get('/dashboard',authenticate, (req,res)=>{
+	res.render('dashboard')
+})
 
-router.delete('/logout', logout);
+router.get('/registro',signupRender);
+router.post('/registro',signup);
+
+router.get('/logout', logout);
 
 export default router;

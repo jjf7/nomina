@@ -1,0 +1,53 @@
+<div class="content-header row">
+                <div class="content-header-left col-md-6 col-12 mb-2">
+                    <h3 class="content-header-title">Usuarios</h3>
+                    
+                </div>
+               
+</div>
+
+
+<div class="container mb-2">
+<a href="/usuarios/nuevo" class="btn btn-primary">Nuevo</a>
+</div>
+
+<div class="row">
+<div class="col-12">
+<div class="card">
+<div class="card-content collapse show">
+<div class="card-body card-dashboard">
+<div class="table-responsive">
+
+<table class="table table-striped table-bordered zero-configuration">
+  <thead>
+    <tr>
+       
+      <th scope="col">Email</th>
+      
+	  <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="cargostable">
+  {{#each results}}
+    <tr>
+     
+      <td>{{UpperCase email}}</td>
+     
+	   <td><a class="text-primary" href="/usuarios/{{id}}">Editar</a>
+	   <a class="text-primary" href="/usuarios/permisos/{{id}}">Perfiles</a>
+	   </td>
+	   
+    </tr>
+  {{/each}} 
+  </tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>

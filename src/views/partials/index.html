@@ -1,0 +1,295 @@
+<div class="content-header row">
+                <div class="content-header-left col-md-6 col-12 mb-2">
+                    <h3 class="content-header-title">Nuevo empleado</h3>
+                    
+                </div>
+</div>
+
+<section id="validation">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <form action="/empleados" method="post" class="vertical-tab-steps wizard-circle">
+
+                            <!-- Step 1 -->
+                            <h6>Paso 1</h6>
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col-md-4">
+										<div class="form-group">
+											<label for="lastName3">
+                                                Cédula
+                                                <span class="danger">*</span>
+                                            </label>
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<select name="nacionalidad">
+														<option value="V">V</option>
+														<option value="E">E</option>
+													</select>
+												</div>
+												<input type="text" name="cedula" class="form-control required" placeholder="Cédula">
+											</div>
+										</div>
+									</div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="lastName3">
+                                                RIF :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <input name="" type="text" class="form-control required" id="rif" name="rif" >
+                                        </div>
+                                    </div>
+									
+									 <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="lastName3">
+                                                Email :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <input name="" type="text" class="form-control required" id="email" name="email" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="emailAddress5">
+                                                Primer nombre :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <input name="primer_nombre" type="text" class="form-control required" id="primer_nombre" name="emailAddress">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="location">
+                                                Segundo nombre :
+                                               
+                                            </label>
+                                           <input name="segundo_nombre" type="text" class="form-control " >
+                                        </div>
+                                    </div>
+									
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="phoneNumber3">Apellido paterno :
+											 <span class="danger">*</span>
+											</label>
+                                            <input name="apellido_paterno" type="text" class="form-control" id="" >
+                                        </div>
+                                    </div>
+									
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="date3">Apellido materno :
+											
+											</label>
+                                            <input type="text" name="apellido_materno" class="form-control " id="date3" >
+                                        </div>
+                                    </div>
+                                </div>
+								
+								<div class="row">
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="">
+                                               Dirección fiscal :
+                                                
+                                            </label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+									</div>	
+								</div>
+                                
+                            </fieldset>
+							
+							
+							
+
+                            <!-- Step 2 -->
+                            <h6>Paso 2</h6>
+                            <fieldset>
+							<div class="row">
+								    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">
+                                               Fecha de nacimiento :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <input name="fecha_nacimiento" type="date" class="form-control required" id="" >
+                                        </div>
+									</div>	
+                                     <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="">
+                                                Lugar nacimiento :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control required" id="" name="">
+                                        </div>
+                                     </div>
+                            </div>
+                                <div class="row">
+									<div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">
+                                                Sexo :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <select name="sex" class="form-control">
+											</select>
+                                        </div>
+                                     </div>
+									 <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">
+                                                Grupo sanguineo :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <select name="sex" class="form-control">
+											</select>
+                                        </div>
+                                     </div>
+									 <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">
+                                                Estado civil :
+                                                <span class="danger">*</span>
+                                            </label>
+                                             <select name="" class="form-control">
+											</select>
+                                        </div>
+                                     </div>
+                                   
+									
+									  									 
+                                </div>
+								
+								<div class="row">
+								    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">
+                                               Fecha de ingreso :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <input name="fecha_nacimiento" type="date" class="form-control required" id="" >
+                                        </div>
+									</div>	
+                                     <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">
+                                                Fecha de egreso :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            <input name="fecha_nacimiento" type="date" class="form-control required" id="" >
+                                        </div>
+                                     </div>
+                            </div>
+								
+								
+                            </fieldset>
+
+                            <!-- Step 3 -->
+                            <h6>Paso 3</h6>
+                            <fieldset>
+                                <div class="row">
+								<div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="eventName3">
+                                                Cargo :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            
+                                        </div>
+                                     </div>  
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                           
+                                            <select name="" class="form-control">
+											</select>
+                                        </div>
+                                     </div>  
+									 <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Sueldo :</label>
+                                            <input type="text" name="" value="" disabled>
+											
+											<div class="text-info">Sueldo sujeto a retención de ISRL</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+								<div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="eventName3">
+                                                Tipo nómina :
+                                                <span class="danger">*</span>
+                                            </label>
+                                            
+                                        </div>
+                                    </div> 
+
+									<div class="col-md-4">
+                                        <div class="form-group">
+                                            
+                                            <select name="" class="form-control">
+											</select>
+                                        </div>
+                                    </div> 									
+									  <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">% ISLR</label>
+                                            <input type="text" name="" value="% 0,00" disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+								<div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="">
+                                                Departamento :
+                                                <span class="danger">*</span>
+                                            </label>
+                                           
+                                        </div>
+                                     </div> 
+									<div class="col-md-4">
+                                        <div class="form-group">
+                                           
+                                            <select name="" class="form-control">
+											</select>
+                                        </div>
+                                     </div>  									 
+									
+
+                                </div>
+								
+								<div class="row">
+                                        <div class="col-md-2">
+                                          <label for="">Cuenta número </label> 
+                                        </div>
+										<div class="col-md-8">
+                                          <input type="text" class="form-control required" id="" name=""> 
+                                        </div>
+                                </div>  
+									
+
+                                </div>
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
